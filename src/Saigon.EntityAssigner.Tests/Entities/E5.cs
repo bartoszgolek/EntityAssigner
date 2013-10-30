@@ -1,7 +1,8 @@
 ﻿using System;
 using Saigon.EntityAssigner;
+using Saigon.EntityAssigner.Tests.Converters;
 
-namespace Saigon.EntityAssignerTest
+namespace Saigon.EntityAssigner.Tests.Entities
 {
 	public class E5
 	{

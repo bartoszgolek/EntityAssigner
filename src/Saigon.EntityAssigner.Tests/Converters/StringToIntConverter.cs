@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Saigon.EntityAssignerTest
+namespace Saigon.EntityAssigner.Tests.Converters
 {
 	public class StringToIntConverter : IAssignConverter
 	{

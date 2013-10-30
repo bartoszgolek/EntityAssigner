@@ -1,21 +1,68 @@
 ﻿using System;
-using NUnit.Framework;
+using Xunit;
 using Saigon.EntityAssigner.Tests.Entities;
 
 namespace Saigon.EntityAssigner.Tests
 {
-	[TestFixture]
+	
 	public class EntityAssignerTest
 	{
-		[Test(Description="Sprawdzenie czy EntityAssigner przepisze tylko oznaczony atrybutem Propert")]
-		public void EntityAssigner_Assign_Prop1Assigned()
+		[Fact]
+		public void EntityAssigner_Assign_E1Prop1Assigned()
 		{
-			E1 e1 = new E1 { Prop1 = "P1" };
-			E1 e2 = new E1();
+			E1 source = new E1 { Prop1 = "P1" };
+			E1 target = new E1();
 			
-			e2.AssignFrom(e1);
+			target.AssignFrom(source);
 			
-			Assert.AreEqual("P1", e2.Prop1);
+			Assert.Equal("P1", target.Prop1);
+		}
+
+		[Fact]
+		public void EntityAssigner_Assign_E2Prop1Assigned()
+		{
+			E1 source = new E1 { Prop1 = "P1" };
+			E2 target = new E2();
+
+			target.AssignFrom(source);
+
+			Assert.Equal("P1", target.Prop1);
+		}
+
+		[Fact]
+		public void EntityAssigner_Assign_E3Prop2Assigned()
+		{
+			E1 source = new E1 { Prop1 = "P1" };
+			source.Prop1 = null;
+			source.Prop2 = "P2";
+
+			E3 target = new E3();
+
+			target.AssignFrom(source);
+
+			Assert.Equal("P2", target.Prop1);
+		}
+
+		[Fact]
+		public void EntityAssigner_Assign_E4Prop1Assigned()
+		{
+			E4 source = new E4 { Prop2 = "P2" };
+			E4 target = new E4();
+
+			target.AssignFrom(source);
+
+			Assert.Equal("P2", target.Prop1);
+		}
+
+		[Fact]
+		public void EntityAssigner_Assign_E5Prop1ConvertedAssigned()
+		{
+			E5 source = new E5 { Prop2 = "2" };
+			E5 target = new E5();
+
+			target.AssignFrom(source);
+
+			Assert.Equal(2, target.Prop1);
 		}
 	}
 }

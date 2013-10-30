@@ -1,7 +1,7 @@
 ﻿using System;
 using Saigon.EntityAssigner;
 
-namespace Saigon.EntityAssignerTest
+namespace Saigon.EntityAssigner.Tests.Entities
 {
 	public class E3
 	{
